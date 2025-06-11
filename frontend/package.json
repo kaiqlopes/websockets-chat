@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "live-server --watch=dist --open=index.html",
+    "dev": "concurrently \"npm:watch\" \"npm:serve\""
+  }
+}
+

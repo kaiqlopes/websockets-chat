@@ -1,0 +1,6 @@
+@WebsocketsChatStudy_HostAddress = http://localhost:5230
+
+GET {{WebsocketsChatStudy_HostAddress}}
+Accept: application/json
+
+###
