@@ -61,3 +61,14 @@ C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\obj\Debug\ne
 C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\obj\Debug\net8.0\WebSocketsChatStudy.pdb
 C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\obj\Debug\net8.0\WebSocketsChatStudy.genruntimeconfig.cache
 C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\obj\Debug\net8.0\ref\WebSocketsChatStudy.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Workspace\Kaiq\websockets-chat-study\backend\WebsocketsChatStudy\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
