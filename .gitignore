@@ -1,6 +1,7 @@
 # -----------------------------
 # Ignore geral para o repositório
 # -----------------------------
+*.vs
 *.user
 *.vspscc
 *.suo
