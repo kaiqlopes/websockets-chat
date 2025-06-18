@@ -1,0 +1,57 @@
+# -----------------------------
+# Ignore geral para o repositório
+# -----------------------------
+*.user
+*.vspscc
+*.suo
+*.userosscache
+*.sln.docstates
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Backend - ASP.NET Core / .NET
+# -----------------------------
+backend/bin/
+backend/obj/
+backend/.vs/
+backend/.idea/
+backend/*.db
+
+
+# Arquivos de configuração sensíveis
+backend/appsettings.Development.json
+backend/appsettings.Local.json
+backend/appsettings.*.json.user
+
+backend/Migrations/
+
+
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+           
+
+# Cache de dependências
+frontend/.npm/
+frontend/.yarn/
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/pnpm-lock.yaml
+
+# -----------------------------
+# IDEs e editores
+# -----------------------------
+.vscode/
+.idea/
+
+# -----------------------------
+# Sistema Operacional
+# -----------------------------
+*.DS_Store
+Thumbs.db
