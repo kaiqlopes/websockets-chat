@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using WebSocketsChatStudy.Context;
 using WebSocketsChatStudy.Middlewares;
+using WebSocketsChatStudy.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ChatContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddDbContext<ChatContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

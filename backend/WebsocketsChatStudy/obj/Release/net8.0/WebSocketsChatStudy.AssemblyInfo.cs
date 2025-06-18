@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebSocketsChatStudy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be4af8147f9f0ae4127e7472efcdf9be6f9ba966")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d633d60bbe6359411ca8ff3a4b7aed6ef00db7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebSocketsChatStudy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebSocketsChatStudy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
