@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj": {}
+    "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj": {}
   },
   "projects": {
-    "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj": {
+    "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
+        "projectUniqueName": "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
         "projectName": "WebSocketsChatStudy",
-        "projectPath": "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
+        "projectPath": "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
         "packagesPath": "C:\\Users\\kalopes\\.nuget\\packages\\",
-        "outputPath": "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\obj\\",
+        "outputPath": "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

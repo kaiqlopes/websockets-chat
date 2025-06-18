@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y51+x9Ixvns=",
+  "dgSpecHash": "wWndhaN5AQ8=",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\Kaiq\\WebsocketsChatStudy\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
+  "projectFilePath": "C:\\Workspace\\Kaiq\\websockets-chat-study\\backend\\WebsocketsChatStudy\\WebSocketsChatStudy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kalopes\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\kalopes\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
