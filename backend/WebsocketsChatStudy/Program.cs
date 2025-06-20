@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebSocketsChatStudy.Context;
 using WebSocketsChatStudy.Middlewares;
-using WebSocketsChatStudy.Models;
+using WebSocketsChatStudy.Models.User;
 
 var builder = WebApplication.CreateBuilder(args);
 

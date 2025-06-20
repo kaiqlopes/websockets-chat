@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebSocketsChatStudy.Models;
+using WebSocketsChatStudy.Models.User;
 
 namespace WebSocketsChatStudy.Context.ContextConfigurations;
 

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebSocketsChatStudy.Models;
+using WebSocketsChatStudy.Models.User;
 
 namespace WebSocketsChatStudy.Context;
 
-public class ChatContext : IdentityDbContext<User, IdentityRole, string>
+public class ChatContext : IdentityDbContext<User, Role, long, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
 {
     public ChatContext(DbContextOptions<ChatContext> options) : base(options) { }
 
