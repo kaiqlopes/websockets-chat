@@ -6,6 +6,8 @@ using System.Text;
 using WebSocketsChatStudy.Context;
 using WebSocketsChatStudy.Middlewares;
 using WebSocketsChatStudy.Models.User;
+using WebSocketsChatStudy.Services;
+using WebSocketsChatStudy.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +46,9 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
     };
 });
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();
 
