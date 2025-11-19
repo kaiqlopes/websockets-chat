@@ -5,5 +5,8 @@ namespace WebSocketsChatStudy.Services.Interfaces;
 
 public interface IAuthenticationService
 {
-    Task<IActionResult> Login(LoginDTO loginDTO);
+    Task<LoginResponseDTO> Login(LoginDTO loginDTO);
+    Task Register(RegisterUserDTO registerUserDTO);
+    Task<TokenDTO> RefreshToken(TokenDTO tokenDTO);
+    Task RekoveAccess(string email);
 }

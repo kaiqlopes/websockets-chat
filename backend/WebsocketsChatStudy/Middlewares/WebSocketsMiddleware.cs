@@ -60,6 +60,7 @@ public class WebSocketsMiddleware
 
                 var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
                 Console.WriteLine($"Received message from user {userId}: {message}");
+
                 await webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, result.Count), WebSocketMessageType.Text, result.EndOfMessage, CancellationToken.None);
             }
         }
