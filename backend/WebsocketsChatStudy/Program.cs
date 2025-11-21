@@ -11,6 +11,18 @@ using WebSocketsChatStudy.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", cors =>
+    {
+        cors
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -49,8 +61,10 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddSingleton<IWebSocketConnectionManager, WebSocketConnectionManager>();
 
 var app = builder.Build();
+app.UseCors("AllowAll");
 
 var webSocketOptions = new WebSocketOptions
 {

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+
+        <div class="introduction">
+            <h2>Create Account</h2>
+            <p class="subtitle">Fill in your information to continue</p>
+        </div>
+        
+        <form class="login-form" id="register-form">
+            <label>Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" placeholder="Your name" required>
+
+            <label>Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Your last name">
+
+            <label>Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your@example.com" required>
+            <div id="error-message-email" class="error-message" style="display: none;"></div>
+
+            <label>Password <span class="required">*</span></label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required>
+            <div id="error-message-password" class="error-message" style="display: none;"></div>
+
+            <div id="success-message" class="success-message" style="display: none;"></div>
+
+            <button type="submit" class="btn-login">Create Account</button>
+
+            <p class="signup">Already have an account? <a href="index.html">Sign In</a></p>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="dist/features/auth/pages/register.js"></script>
+</body>
+</html>
+

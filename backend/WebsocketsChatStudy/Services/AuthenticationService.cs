@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using WebSocketsChatStudy.Context;
 using WebSocketsChatStudy.DTOs;
+using WebSocketsChatStudy.Exceptions;
 using WebSocketsChatStudy.Models.User;
 using WebSocketsChatStudy.Services.Interfaces;
 
@@ -11,7 +10,6 @@ namespace WebSocketsChatStudy.Services;
 
 public class AuthenticationService : IAuthenticationService
 {
-
     private readonly UserManager<User> _userManager;
     private readonly RoleManager<Role> _roleManager;
     private readonly ITokenService _tokenService;
@@ -30,13 +28,14 @@ public class AuthenticationService : IAuthenticationService
         var user = await _userManager.FindByNameAsync(loginDTO.Email!);
 
         if (user == null || !await _userManager.CheckPasswordAsync(user, loginDTO.Password))
-            throw new InvalidOperationException("Deu ruim");
-        
+            throw new InvalidCredentialsException("Incorrect user or password.");
+
         var userRoles = await _userManager.GetRolesAsync(user);
 
         var authClaims = new List<Claim>
         {
             new Claim(ClaimTypes.Email, user.Email!),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
@@ -72,13 +71,13 @@ public class AuthenticationService : IAuthenticationService
         var principal = _tokenService.GetPrincipalFromExpiredToken(tokenDTO.AccessToken!, _configuration);
 
         if (principal == null)
-            throw new InvalidOperationException("Invalid access/refresh token");
+            throw new InvalidCredentialsException("Invalid access/refresh token");
 
         var email = principal.FindFirstValue(ClaimTypes.Email);
         var user = await _userManager.FindByEmailAsync(email);
 
         if (user == null || user.RefreshToken != tokenDTO.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
-            throw new InvalidOperationException("Invalid access/refresh token");
+            throw new InvalidCredentialsException("Invalid access/refresh token");
 
         var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims, _configuration);
         var newRefreshToken = _tokenService.GenerateRefreshToken();
@@ -98,7 +97,7 @@ public class AuthenticationService : IAuthenticationService
         var userExists = await _userManager.FindByEmailAsync(registerUserDTO.Email!);
 
         if (userExists != null)
-            throw new InvalidOperationException("User already exists");
+            throw new InvalidOperationException("An account with this email already exists.");
 
         User user = new()
         {
@@ -115,12 +114,12 @@ public class AuthenticationService : IAuthenticationService
             throw new InvalidOperationException("User creation failed! Please check user details and try again.");
     }
 
-    public async Task RekoveAccess(string email)
+    public async Task RekoveAccess(string userId)
     {
-        var user = await _userManager.FindByEmailAsync(email);
+        var user = await _userManager.FindByIdAsync(userId!);
 
         if (user == null)
-            throw new InvalidOperationException("Invalid username");
+            throw new ResourceNotFoundException("User not found");
 
         user.RefreshToken = null;
         await _userManager.UpdateAsync(user);

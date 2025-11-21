@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebSocketsChatStudy.DTOs;
+using WebSocketsChatStudy.Exceptions;
 using WebSocketsChatStudy.Services.Interfaces;
 
 namespace WebSocketsChatStudy.Controllers;
@@ -21,33 +23,67 @@ public class AuthenticationController : ControllerBase
     [Route("Login")]
     public async Task<ActionResult<LoginResponseDTO>> Login([FromBody] LoginDTO loginDTO)
     {
-        var response = await _authenticationService.Login(loginDTO);
-        return Ok(response);
+        try
+        {
+            var response = await _authenticationService.Login(loginDTO);
+            return Ok(response);
+        }
+        catch (InvalidCredentialsException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost]
     [Route("Register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserDTO registerUserDTO)
     {
-        await _authenticationService.Register(registerUserDTO);
-        return Created();
+        try
+        {
+            await _authenticationService.Register(registerUserDTO);
+            return Created();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost]
     [Route("RefreshToken")]
     public async Task<ActionResult<TokenDTO>> RefreshToken([FromBody] TokenDTO tokenDTO)
     {
-        var response = await _authenticationService.RefreshToken(tokenDTO);
-        return Ok(response);
+        try
+        {
+            var response = await _authenticationService.RefreshToken(tokenDTO);
+            return Ok(response);
+        }
+        catch (InvalidCredentialsException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (ArgumentNullException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
     }
 
     [Authorize]
     [HttpPost]
-    [Route("RevokeAccess/{email}")]
-    public async Task<IActionResult> RevokeAccess(string email)
+    [Route("RevokeAccess")]
+    public async Task<IActionResult> RevokeAccess()
     {
-        await _authenticationService.RekoveAccess(email);
+        try
+        {
+            string? userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await _authenticationService.RekoveAccess(userId!);
+            return NoContent();
 
-        return NoContent();
+        }
+        catch (ResourceNotFoundException ex)
+        {
+            return NotFound(ex.Message);
+        }
     }
 }

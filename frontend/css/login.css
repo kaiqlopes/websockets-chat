@@ -1,0 +1,192 @@
+/* ========= PALETA BASEADA NA SUA IMAGEM ========= */
+:root {
+    --blue-strong: #1976D2;
+    --bubble-blue: #DFF4FF;
+    --bubble-gray: #F3F4F6;
+    --bg: #F7FBFC;
+    --border: #E6EEF7;
+    --text-dark: #2F3A4A;
+    --text-light: #7B8794;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.introduction {
+    text-align: center;
+}
+
+body {
+    background: var(--bg);
+}
+
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.login-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: var(--text-light);
+    margin-bottom: 28px;
+}
+
+.login-form label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 18px;
+    outline: none;
+    font-size: 14px;
+}
+
+.login-form input:focus {
+    border-color: var(--blue-strong);
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.login-form input.error {
+    border-color: #d32f2f;
+    margin-bottom: 4px;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-bottom: 14px;
+    padding: 4px 0;
+    display: block;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.remember {
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.forgot {
+    color: var(--blue-strong);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    background: var(--blue-strong);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.btn-login:hover {
+    opacity: 0.85;
+}
+
+.divider {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-social {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+}
+
+.btn-social:hover {
+    background: var(--bubble-gray);
+}
+
+.signup {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-dark);
+}
+
+.signup a {
+    color: var(--blue-strong);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+.required {
+    color: #d32f2f;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.success-message::before {
+    content: "✓";
+    font-size: 18px;
+    font-weight: bold;
+}

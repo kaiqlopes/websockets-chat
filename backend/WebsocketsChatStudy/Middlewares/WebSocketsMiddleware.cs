@@ -1,19 +1,19 @@
 ﻿
-using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Text;
+using WebSocketsChatStudy.Services.Interfaces;
 
 namespace WebSocketsChatStudy.Middlewares;
 
 public class WebSocketsMiddleware
 {
-    private static readonly ConcurrentDictionary<long, WebSocket> _connections = new();
-
+    private readonly IWebSocketConnectionManager _webSocketConnectionManager;
     private readonly RequestDelegate _next;
 
-    public WebSocketsMiddleware(RequestDelegate next)
+    public WebSocketsMiddleware(RequestDelegate next, IWebSocketConnectionManager webSocketConnectionManager)
     {
         _next = next;
+        _webSocketConnectionManager = webSocketConnectionManager;
     }
 
     public async Task InvokeAsync(HttpContext context)
@@ -34,10 +34,13 @@ public class WebSocketsMiddleware
                 return;
             }*/
 
+
+
             var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-            _connections[1] = webSocket;
+            _webSocketConnectionManager.AddSocket(webSocket, 1);
 
             await HandleWebSocketConnection(webSocket, 1);
+            return;
         }
         else
         {
@@ -54,27 +57,24 @@ public class WebSocketsMiddleware
             while (webSocket.State == WebSocketState.Open)
             {
                 var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-
+                
                 if (result.MessageType == WebSocketMessageType.Close)
                     break;
 
                 var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
                 Console.WriteLine($"Received message from user {userId}: {message}");
 
-                await webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, result.Count), WebSocketMessageType.Text, result.EndOfMessage, CancellationToken.None);
+                await _webSocketConnectionManager.SendMessageAsync(userId, message);
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"WebSocket error: {ex.Message}");
+            await _webSocketConnectionManager.RemoveSocketAsync(userId, ex.Message, WebSocketCloseStatus.InternalServerError);
         }
         finally
         {
-            _connections.TryRemove(userId, out _);
-
-            await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, $"Connection closed with user id: {userId}", CancellationToken.None);
-
-            webSocket.Dispose();
+            await _webSocketConnectionManager.RemoveSocketAsync(userId, $"Connection closed with user id: {userId}", WebSocketCloseStatus.NormalClosure);
         }
     }
 }
