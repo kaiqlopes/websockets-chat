@@ -14,10 +14,7 @@ public class AuthenticationController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
-    {
-        _authenticationService = authenticationService;
-    }
+    public AuthenticationController(IAuthenticationService authenticationService) => _authenticationService = authenticationService;
 
     [HttpPost]
     [Route("Login")]
